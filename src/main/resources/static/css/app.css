@@ -1,0 +1,370 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --talosi-blue: #0033ff;
+    --talosi-light-blue: #3960ff;
+    --talosi-dark-blue: #05054d;
+    --talosi-yellow: #fad922;
+    --talosi-yellow-hover: #e6c200;
+    --surface: #ffffff;
+    --surface-muted: #ecf0f4;
+    --border: #d2d2d2;
+    --text-muted: #666666;
+    --danger: #ac2436;
+}
+
+body {
+    margin: 0;
+    background: var(--surface-muted);
+    color: var(--talosi-dark-blue);
+    font: 15px/1.5 system-ui, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 96px;
+    padding: 16px max(24px, calc((100vw - 1200px) / 2));
+    border-bottom: 5px solid var(--talosi-yellow);
+    background: var(--surface);
+    color: var(--talosi-dark-blue);
+}
+
+header h1 {
+    margin: 3px 0;
+    font-size: 23px;
+}
+
+header > div {
+    min-width: 0;
+}
+
+header > .pill {
+    margin-left: auto;
+}
+
+small {
+    color: var(--talosi-blue);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 72px;
+    height: 54px;
+    max-width: 72px;
+    object-fit: contain;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+}
+
+.intro h2 {
+    margin: 5px 0;
+    font-size: 28px;
+}
+
+.intro p,
+.muted {
+    color: rgb(255 255 255 / 82%);
+}
+
+.intro {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 34px;
+    border-radius: 16px;
+    background: linear-gradient(90deg, var(--talosi-dark-blue), var(--talosi-blue));
+    color: var(--surface);
+    box-shadow: 0 14px 30px rgb(5 5 77 / 16%);
+}
+
+.intro::after {
+    position: absolute;
+    right: -30px;
+    bottom: -46px;
+    width: 150px;
+    height: 150px;
+    border: 20px solid rgb(250 217 34 / 90%);
+    border-radius: 50%;
+    content: "";
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.card {
+    margin-bottom: 22px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--talosi-blue);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow: 0 8px 24px rgb(5 5 77 / 7%);
+}
+
+h2 {
+    margin: 0 0 15px;
+    font-size: 19px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.heading h2 {
+    margin: 0;
+}
+
+.pill {
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--talosi-yellow);
+    color: var(--talosi-dark-blue);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+header .pill,
+.chat .pill {
+    border: 1px solid #fad922;
+    background-color: #fad922;
+    color: var(--talosi-dark-blue);
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: inherit;
+    font: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--talosi-blue);
+}
+
+textarea {
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin: 12px 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+label input,
+label textarea,
+label select {
+    display: block;
+    margin-top: 5px;
+}
+
+button {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--talosi-yellow);
+    color: var(--talosi-dark-blue);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+button:hover {
+    background: var(--talosi-blue);
+    color: var(--surface);
+    transform: translateY(-1px);
+}
+
+:focus-visible {
+    outline: 3px solid var(--talosi-yellow-hover);
+    outline-offset: 3px;
+}
+
+.ticket {
+    padding: 15px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.ticket h3 {
+    margin: 0;
+    color: var(--talosi-blue);
+    font-size: 16px;
+}
+
+.ticket p {
+    margin: 6px 0;
+}
+
+.meta {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.ticket select {
+    width: auto;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+details {
+    padding: 12px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+summary {
+    color: var(--talosi-blue);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.chat {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+#messages {
+    min-height: 230px;
+    max-height: 480px;
+    padding: 12px 0;
+    overflow: auto;
+}
+
+.bubble {
+    margin: 10px 0;
+    padding: 13px 16px;
+    overflow-wrap: anywhere;
+    border-radius: 12px;
+    white-space: pre-wrap;
+}
+
+.assistant {
+    margin-right: 25px;
+    border-left: 4px solid var(--talosi-blue);
+    background: rgb(0 51 255 / 8%);
+}
+
+.user {
+    margin-left: 25px;
+    border-right: 4px solid var(--talosi-yellow-hover);
+    background: rgb(250 217 34 / 35%);
+}
+
+p[role="alert"] {
+    color: var(--danger);
+}
+
+footer {
+    padding: 22px 20px;
+    border-top: 5px solid var(--talosi-yellow);
+    background: linear-gradient(90deg, var(--talosi-dark-blue), var(--talosi-blue));
+    color: rgb(255 255 255 / 82%);
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .chat {
+        position: static;
+    }
+
+    header > .pill {
+        display: none;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 18px;
+    }
+
+    header {
+        gap: 14px;
+        min-height: 88px;
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    header h1 {
+        font-size: 19px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    header small {
+        font-size: 10px;
+    }
+
+    .brand-logo {
+        width: 60px;
+        height: 45px;
+        max-width: 60px;
+    }
+
+    .intro {
+        padding: 24px;
+    }
+
+    .intro h2,
+    .intro p {
+        position: relative;
+        z-index: 1;
+    }
+
+    .heading {
+        flex-wrap: wrap;
+    }
+
+    .layout > div,
+    .card {
+        min-width: 0;
+    }
+
+    .card {
+        padding: 18px;
+    }
+}

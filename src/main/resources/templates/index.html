@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${appName}">Support technique</title>
+    <link
+            rel="stylesheet"
+            href="/css/app.css?v=talosi-20261007"
+            th:href="@{/css/app.css(v='talosi-20261007')}"
+    >
+    <script defer th:src="@{/js/app.js}"></script>
+</head>
+<body>
+<header>
+    <img
+            class="brand-logo"
+            th:src="@{/images/logo-talosi-RVB-bleu.svg}"
+            src="/images/logo-talosi-RVB-bleu.svg"
+            alt="Talosi"
+            width="72"
+            height="54"
+    >
+    <div>
+        <small>FORMATION SPRING AI</small>
+        <h1 th:text="${appName}">Support technique</h1>
+    </div>
+    <span class="pill">Socle de départ</span>
+</header>
+
+<main>
+    <section class="intro">
+        <h2>Un problème ? Trouvons la solution.</h2>
+        <p>Gérez les demandes d’assistance et échangez avec le futur assistant IA.</p>
+    </section>
+
+    <div class="layout">
+        <div>
+            <section class="card">
+                <div class="heading">
+                    <h2>Tickets d’assistance</h2>
+                    <button id="refresh" type="button">Actualiser</button>
+                </div>
+
+                <div class="filters">
+                    <input
+                            id="search"
+                            aria-label="Rechercher des tickets"
+                            placeholder="Rechercher un ticket…"
+                    >
+                    <select id="status" aria-label="Filtrer par statut">
+                        <option value="">Tous les statuts</option>
+                        <option value="OPEN">Ouvert</option>
+                        <option value="IN_PROGRESS">En cours</option>
+                        <option value="RESOLVED">Résolu</option>
+                    </select>
+                </div>
+
+                <p id="ticket-error" role="alert"></p>
+                <div id="tickets" aria-live="polite">Chargement des tickets…</div>
+            </section>
+
+            <section class="card">
+                <h2>Créer une demande</h2>
+                <form id="ticket-form">
+                    <label>
+                        Sujet
+                        <input name="title" required maxlength="150">
+                    </label>
+                    <label>
+                        Votre nom
+                        <input name="requester" required maxlength="100">
+                    </label>
+                    <label>
+                        Description
+                        <textarea name="description" required maxlength="3000" rows="3"></textarea>
+                    </label>
+                    <label>
+                        Priorité
+                        <select name="priority">
+                            <option value="NORMAL">Normale</option>
+                            <option value="HIGH">Haute</option>
+                            <option value="LOW">Basse</option>
+                        </select>
+                    </label>
+                    <button type="submit">Créer le ticket</button>
+                    <p id="create-message" role="status"></p>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Base de connaissances</h2>
+                <div id="articles">Chargement des articles…</div>
+            </section>
+        </div>
+
+        <aside class="card chat">
+            <div class="heading">
+                <h2>Assistant technique</h2>
+                <span class="pill">Simulation</span>
+            </div>
+      
+            <div id="messages" role="log" aria-live="polite">
+                <div class="bubble assistant">
+                    Bonjour ! Décrivez votre problème pour tester le parcours du chat.
+                </div>
+            </div>
+            <form id="chat-form">
+                <label for="message">Votre message</label>
+                <textarea
+                        id="message"
+                        required
+                        maxlength="4000"
+                        rows="3"
+                        placeholder="Je n’arrive plus à me connecter au VPN…"
+                ></textarea>
+                <button type="submit">Envoyer</button>
+                <p id="chat-error" role="alert"></p>
+            </form>
+        </aside>
+    </div>
+</main>
+
+<footer>Données fictives en mémoire · Réinitialisées à chaque démarrage</footer>
+</body>
+</html>

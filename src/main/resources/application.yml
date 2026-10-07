@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-ai-starter
+  mvc:
+    problemdetails:
+      enabled: true
+server:
+  port: 8080

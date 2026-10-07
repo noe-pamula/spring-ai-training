@@ -1,0 +1,35 @@
+### Tickets
+GET http://localhost:8080/api/tickets
+
+### Filtrer
+GET http://localhost:8080/api/tickets?status=OPEN&q=VPN
+
+### Créer
+POST http://localhost:8080/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Imprimante inaccessible",
+  "description": "L’imprimante ne répond plus.",
+  "requester": "Noé",
+  "priority": "NORMAL"
+}
+
+### Changer le statut
+PATCH http://localhost:8080/api/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "IN_PROGRESS"
+}
+
+### Articles
+GET http://localhost:8080/api/articles
+
+### Chat
+POST http://localhost:8080/api/chat
+Content-Type: application/json
+
+{
+  "message": "Mon VPN ne fonctionne pas"
+}
