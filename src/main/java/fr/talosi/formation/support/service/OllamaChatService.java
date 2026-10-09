@@ -1,7 +1,9 @@
 package fr.talosi.formation.support.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.stereotype.Service;
 
+@Service 
 public class OllamaChatService implements ChatService {
     
     private final ChatClient chatClient;
