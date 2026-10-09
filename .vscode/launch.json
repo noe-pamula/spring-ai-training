@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SupportApplication<spring-ai-starter>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "fr.talosi.formation.support.SupportApplication",
+            "projectName": "spring-ai-starter",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
