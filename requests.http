@@ -23,6 +23,22 @@ Content-Type: application/json
   "status": "IN_PROGRESS"
 }
 
+### Analyser un ticket complet avec une sortie structurée
+POST http://localhost:8080/tickets/analyze
+Content-Type: application/json
+
+{
+  "ticketText": "Le VPN affiche l'erreur 619 depuis 9h pour toute l'équipe commerciale."
+}
+
+### Analyser un ticket vague avec une sortie structurée
+POST http://localhost:8080/tickets/analyze
+Content-Type: application/json
+
+{
+  "ticketText": "Ça ne marche pas."
+}
+
 ### Articles
 GET http://localhost:8080/api/articles
 

@@ -10,7 +10,13 @@ public class OllamaChatService implements ChatService {
     private final ChatClient chatClient;
 
     public OllamaChatService(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder
+        .defaultSystem("""
+                        Tu es un assistant de support informatique.
+                        Réponds en français, de manière concise et pratique.
+                        Si tu ne connais pas la réponse, indique-le clairement.
+                        """)
+        .build();
     }
 
     @Override
