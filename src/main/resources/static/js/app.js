@@ -177,36 +177,81 @@ $("ticket-form").addEventListener("submit", async (event) => {
 });
 
 function bubble(text, role) {
-    $("messages").append(element("div", text, `bubble ${role}`));
+    const node = element("div", text, `bubble ${role}`);
+    $("messages").append(node);
     $("messages").scrollTop = $("messages").scrollHeight;
+    return node;
+}
+
+function streamChat(message, target) {
+    return new Promise((resolve, reject) => {
+        const url = `/api/chat/stream?message=${encodeURIComponent(message)}`;
+        const events = new EventSource(url);
+        let completed = false;
+
+        const content = (event) => JSON.parse(event.data).content;
+
+        events.addEventListener("chunk", (event) => {
+            target.textContent += content(event);
+            $("messages").scrollTop = $("messages").scrollHeight;
+        });
+
+        events.addEventListener("done", () => {
+            completed = true;
+            events.close();
+            resolve();
+        });
+
+        events.addEventListener("generation-error", (event) => {
+            events.close();
+            reject(new Error(content(event) || "La génération de la réponse a échoué."));
+        });
+
+        events.onerror = () => {
+            events.close();
+            if (!completed) {
+                reject(new Error("La connexion au flux de réponse a été interrompue."));
+            }
+        };
+    });
 }
 
 $("chat-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const form = event.currentTarget;
     const message = $("message").value.trim();
 
     if (!message) {
         return;
     }
 
-    const button = event.currentTarget.querySelector("button");
-    button.disabled = true;
+    const mode = event.submitter?.dataset.mode ?? "sync";
+    const buttons = form.querySelectorAll('button[type="submit"]');
+    buttons.forEach((button) => button.disabled = true);
     $("chat-error").textContent = "";
     bubble(message, "user");
+    const answer = bubble("", "assistant");
+    $("message").value = "";
 
     try {
-        const result = await api("/api/chat", {
-            method: "POST",
-            body: JSON.stringify({ message })
-        });
-
-        bubble(result.reply, "assistant");
-        $("message").value = "";
+        if (mode === "stream") {
+            await streamChat(message, answer);
+        } else {
+            const result = await api("/api/chat", {
+                method: "POST",
+                body: JSON.stringify({ message })
+            });
+            answer.textContent = result.reply;
+            $("messages").scrollTop = $("messages").scrollHeight;
+        }
     } catch (error) {
+        if (!answer.textContent) {
+            answer.remove();
+        }
         $("chat-error").textContent = error.message;
     } finally {
-        button.disabled = false;
+        buttons.forEach((button) => button.disabled = false);
     }
 });
 

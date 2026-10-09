@@ -33,3 +33,7 @@ Content-Type: application/json
 {
   "message": "Mon VPN ne fonctionne pas"
 }
+
+### Chat en streaming (SSE)
+GET http://localhost:8080/api/chat/stream?message=Mon%20VPN%20ne%20fonctionne%20pas
+Accept: text/event-stream

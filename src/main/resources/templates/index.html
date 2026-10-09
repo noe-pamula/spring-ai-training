@@ -97,12 +97,12 @@
         <aside class="card chat">
             <div class="heading">
                 <h2>Assistant technique</h2>
-                <span class="pill">Simulation</span>
+                <span class="pill">Ollama · 2 modes</span>
             </div>
       
             <div id="messages" role="log" aria-live="polite">
                 <div class="bubble assistant">
-                    Bonjour ! Décrivez votre problème pour tester le parcours du chat.
+                    Bonjour ! Choisissez une réponse complète ou un affichage progressif.
                 </div>
             </div>
             <form id="chat-form">
@@ -114,7 +114,12 @@
                         rows="3"
                         placeholder="Je n’arrive plus à me connecter au VPN…"
                 ></textarea>
-                <button type="submit">Envoyer</button>
+                <div class="chat-actions">
+                    <button type="submit" data-mode="sync">Réponse complète</button>
+                    <button type="submit" data-mode="stream" class="secondary">
+                        Réponse en streaming
+                    </button>
+                </div>
                 <p id="chat-error" role="alert"></p>
             </form>
         </aside>

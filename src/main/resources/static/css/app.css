@@ -288,6 +288,23 @@ summary {
     background: rgb(250 217 34 / 35%);
 }
 
+.chat-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chat-actions .secondary {
+    border: 2px solid var(--talosi-blue);
+    background: var(--surface);
+    color: var(--talosi-blue);
+}
+
+.chat-actions .secondary:hover {
+    background: var(--talosi-blue);
+    color: var(--surface);
+}
+
 p[role="alert"] {
     color: var(--danger);
 }
