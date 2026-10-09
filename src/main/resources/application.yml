@@ -5,11 +5,11 @@ spring:
     model:
       chat: ollama
     ollama:
-        base-url: http://localhost:11434
-        chat:
-          model: qwen3:0.6b
-          temperature: 0.2
-          num-predict: 200
+      base-url: http://localhost:11434
+      chat:
+        model: qwen3:0.6b
+        temperature: 0.2
+        num-predict: 200
   mvc:
     problemdetails:
       enabled: true
